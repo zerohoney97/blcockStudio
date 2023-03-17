@@ -99,13 +99,42 @@ body {
 /*메인 스테이지 */
 .zerohoney-main-stage {
     width: 100%;
-    height: 364px;
+    height: 363px;
     border: 1px solid #FFF2F2;
 }
 
 .zerohoney-main-stage-first-row{
     width: 100%;
+    height: 119px;
     border: 1px solid #FFF2F2;
-    
+    display: flex;
+}
+.zerohoney-main-stage-first-row div{
+    width: 237px;
+    border: 1px solid #FFF2F2;
+    height: 100%;
+}
+.zerohoney-main-stage-second-row{
+    width: 100%;
+    height: 119px;
+    border: 1px solid #FFF2F2;
+    display: flex;
+}
+.zerohoney-main-stage-second-row div{
+    width: 237px;
+    border: 1px solid #FFF2F2;
+    height: 100%;
+}
+.zerohoney-main-stage-third-row{
+    width: 100%;
+    height: 119px;
+    border: 1px solid #FFF2F2;
+    display: flex;
+}
+.zerohoney-main-stage-third-row div{
+    width: 237px;
+    border: 1px solid #FFF2F2;
+    height: 100%;
+
 }
 /*메인 스테이지 */
