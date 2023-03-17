@@ -1,31 +1,111 @@
 @font-face {
-    font-family: 'spider';
-    src: url('./font/CombackHomeRegular-jEMd9.ttf');
+  font-family: "spider";
+  src: url("./font/CombackHomeRegular-jEMd9.ttf");
 }
 
-h1{
-    font-family: 'spider';
+h1 {
+  font-family: "spider";
 }
 
-body{
-    margin: 0;
-    padding: 0;
-    background-image: url('./spidermanBackground.jpeg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "spider";
+  background-image: url("./spidermanBackground.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
 }
 
-.main-container{
-    border: 1px solid white;
-    width: 950px;
-    height: 550px;
-    background-color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border-radius: 30px;
+.main-container {
+  border: 1px solid white;
+  width: 950px;
+  height: 550px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
 }
+.zerohoney-combat-background-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background-color: #8ea7e9;
+  position: absolute;
+  opacity: 0.8;
+}
+.zerohoney-ingame-contianer {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  position: absolute;
+}
+
+/* 체력바를 관리하는 css section */
+.zerohoney-hpbar-container {
+  display: flex;
+  justify-content: space-between;
+}
+.zerohoney-hpbar {
+  border: 1px solid red;
+  width: 48%;
+  height: 30px;
+  border-radius: 30px;
+  margin-top: 8px;
+}
+
+.zerohoney-in-hpbar {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background-color: red;
+}
+/* 체력바를 관리하는 css section */
+
+/* 행동을 선택할 수 있는 css section */
+.zerohoney-select-container {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
+}
+.zerohoney-attack {
+  background-color: #e5e0ff;
+  border: 1px solid #e5e0ff;
+  width: 150px;
+  height: 80px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 57px;
+}
+.zerohoney-skill {
+  background-color: #e5e0ff;
+  border: 1px solid #e5e0ff;
+  width: 150px;
+  height: 80px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 57px;
+}
+
+/* 행동을 선택할 수 있는 css section */
+/*메인 스테이지 */
+.zerohoney-main-stage {
+    width: 100%;
+    height: 364px;
+    border: 1px solid #FFF2F2;
+}
+
+.zerohoney-main-stage-first-row{
+    width: 100%;
+    border: 1px solid #FFF2F2;
+    
+}
+/*메인 스테이지 */
