@@ -105,8 +105,7 @@ body {
 }
 
 /* div가 하나이기 때문에 굳이display:flex를 할 필요 없어 이미 left로 중심을 맞췄기 때문에! */
-.yeon-imfo {
-  display: flex;
+.yeon-info {
   justify-content: flex-start;
   align-items: center;
   position: relative;
