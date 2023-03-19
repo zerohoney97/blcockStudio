@@ -8,7 +8,51 @@
     <link rel="stylesheet" href="./shop.css">
 </head>
 <body>
-    <div class="main-container"></div>
+    <!-- 아이템 구매 클릭 시 발생하는 이벤트 -->
+    <div class="popup_background">
+        <div class="wanna_buy"> You wanna buy?
+            <div class="answer">
+                <div class="yes" onclick="noMoney();">Yep</div>
+                <div class="no" onclick="buy();">Nope</div>
+            </div>
+        </div>
+    </div>
+    <!-- 아이템 구매 금액이 부족할 때 발생하는 이벤트 -->
+    <div class="noMoney_background">
+        <div class="noMoney_mention">You don't have enough money!!
+            <div class="ok" onclick="noMoney();">Okay..</div>
+        </div>
+    </div>
+        <div class="main-container">
+            <!-- 상점 상단 바 -->
+            <div class="shop_bar">
+                <div class="back_to_main"><img src="red-arrow-2718071_1920.png"></div>
+                <div class="game_money"><img src="./etherium.png"> 1000</div> <!--함수 적용할 것-->
+                <div class="go_inventory">Inventory</div>
+            </div>
+            <!-- 상점 아이템 리스트 -->
+            <div class="shop_item">
+                <ul class="weapon">   <!-- 무기 -->
+                    <li class="item_name">Weapon</li>
+                    <li class="item_img"><img src="./mjolnir.png"></li>
+                    <li class="item_info"></li>
+                    <li class="item_price" onclick="buy();"><img src="./etherium.png">600</li>
+                </ul>
+                <ul class="armor">  <!-- 방어구 -->
+                    <li class="item_name">Armor</li>
+                    <li class="item_img"><img src="./shield.png"></li>
+                    <li class="item_info"></li>
+                    <li class="item_price" onclick="buy();"><img src="./etherium.png">500</li>
+                </ul>
+                <ul class="life">   <!-- 체력 -->
+                    <li class="item_name">Life</li>
+                    <li class="item_img"></li>
+                    <li class="item_info"></li>
+                    <li class="item_price" onclick="buy();"><img src="./etherium.png">200</li>
+                </ul>
+            </div>
+        </div>  
     
 </body>
+<script src="./shop.js"></script>
 </html>
