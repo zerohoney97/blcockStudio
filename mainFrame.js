@@ -53,7 +53,9 @@ function villan(atk, def, hp) {
   this.hp = hp;
 }
 
-let electrto = new villan(10, 10, 100);
+let electro = new villan(10, 10, 100);
+let venom = new villan(15, 15, 150);
+let thanos = new villan(30, 30, 300);
 // 케릭터--------------------------------------------------------------------------------------------------------
 
 //   전역변수
@@ -76,24 +78,53 @@ let zerohoneyChangeStringIntegerToNumber = {
   3: "third",
   4: "forth",
 };
+// 로드시 빌런생성
+window.onload = () => {
+  document.querySelector("#zerohoney-main-stage-third-row-forth").innerHTML =
+    venomNormal;
+};
 // 이동하기
 document
   .querySelector(".zerohoney-main-stage")
   .addEventListener("click", (a) => {
-    move(a);
+    heroAction(a);
   });
 
 // 공격키
-document.querySelector("#zerohoney-attack").addEventListener("click", () => {
-  heroAttack(zerohoneyBeforeHeroTile, zerohoneyBeforeVillanTile);
+document.querySelector("#zerohoney-attack-id").addEventListener("click", () => {
+  heroAttack();
+});
+// 스킬키
+document.querySelector("#zerohoney-skill-id").addEventListener("click", () => {
+  heroSkill();
 });
 
-// 빌런행동 함수(자동)
-function validationMovementAuto(beforeTile) {
-  // 본 코드는 다음과 같이 작동한다.
-  // 1.랜덤함수로 1~7까지 수를 뽑는다.
-  // 2.1~4는 빌런을 움직인다.만약 막힌 길에서 더 움직이려하면 임의로 행,렬을 조종한다,만약 5,6,7이면 어택으로 넘어간다.
-  // 3. 그 후에 이동할 div태그의 id를 리턴해준다.
+function changeIdToHeroLocation() {
+  let heroLocation = [
+    zerohoneyChangeStringNumberToInteger[
+      zerohoneyBeforeHeroTile.id.toString().split("-")[3]
+    ],
+    zerohoneyChangeStringNumberToInteger[
+      zerohoneyBeforeHeroTile.id.toString().split("-")[5]
+    ],
+  ];
+  return heroLocation;
+}
+
+function changeIdToVillanLocation() {
+  let villanLocation = [
+    zerohoneyChangeStringNumberToInteger[
+      zerohoneyBeforeVillanTile.id.toString().split("-")[3]
+    ],
+    zerohoneyChangeStringNumberToInteger[
+      zerohoneyBeforeVillanTile.id.toString().split("-")[5]
+    ],
+  ];
+  return villanLocation;
+}
+
+// 빌런의 행동을 결정하는 함수(자동이기 때문에 재귀로 돌려도 상관 없음)
+function validationVillanMovement(beforeTile) {
   let ran = parseInt(Math.random() * 7 + 1);
   let beforeTileId = beforeTile.id.toString();
   let beforeTileArray = beforeTileId.split("-");
@@ -132,10 +163,10 @@ function validationMovementAuto(beforeTile) {
   }
 }
 
-// 이동방향이 자신의 기준 십자가인지 확인해주는 함수(수동)
-function validationMovement(beforeTile, clickedTile) {
+// 히어로의 이동 방향을 결정해주는 함수(수동이기 때문에 한번에 끝내야함)
+function validationHeroMovement(clickedTile) {
   // 맨처음에는 전 타일이 없으므로
-  let beforeTileId = beforeTile.id.toString();
+  let beforeTileId = zerohoneyBeforeHeroTile.id.toString();
   let beforeTileArray = beforeTileId.split("-");
   let row = zerohoneyChangeStringNumberToInteger[beforeTileArray[3]];
   let column = zerohoneyChangeStringNumberToInteger[beforeTileArray[5]];
@@ -155,10 +186,10 @@ function validationMovement(beforeTile, clickedTile) {
   }
 }
 
-// pvp move
-function move(clickedTile) {
+// 히어로의 행동을 시작하는 함수(클릭했을 때)
+function heroAction(clickedTile) {
   // 본 코드는 다음과 같은 규칙을 따른다.
-  
+  console.log(clickedTile);
   let selectedTile = document.querySelector(`#${clickedTile.target.id}`);
   let heroImg = document.querySelector("div .zerohoney-hero-image");
   let villanImg = document.querySelector("div .zerohoney-villan-image");
@@ -171,7 +202,7 @@ function move(clickedTile) {
     }
     if (
       // 맨 처음 시작이거나 이동방향을 만족 했을 때
-      validationMovement(zerohoneyBeforeHeroTile, selectedTile)
+      validationHeroMovement(selectedTile)
     ) {
       // 히어로 이미지 제거
       heroImg.remove();
@@ -179,6 +210,41 @@ function move(clickedTile) {
       zerohoneyBeforeHeroTile = selectedTile;
       villanAction(villanImg);
     }
+  }
+}
+
+// 히어로 일반공격
+function heroAttack() {
+  if (zerohoneyBeforeHeroTile !== "" && zerohoneyBeforeVillanTile !== "") {
+    let heroLocation = changeIdToHeroLocation(zerohoneyBeforeHeroTile);
+    let villanLocation = changeIdToVillanLocation(zerohoneyBeforeVillanTile);
+    if (
+      Math.abs(villanLocation[0] - heroLocation[0]) <= 1 &&
+      Math.abs(villanLocation[1] - heroLocation[1]) <= 1
+    ) {
+      console.log(electro.hp - 10);
+    }
+
+    //   스파이더맨이 공격했다면 빌런이 다음행동을 해야함
+    let villanImg = document.querySelector("div .zerohoney-villan-image");
+    villanAction(villanImg);
+  }
+}
+
+function heroSkill() {
+  if (zerohoneyBeforeHeroTile !== "" && zerohoneyBeforeVillanTile !== "") {
+    let heroLocation = changeIdToHeroLocation(zerohoneyBeforeHeroTile);
+    let villanLocation = changeIdToVillanLocation(zerohoneyBeforeVillanTile);
+    if (
+      (villanLocation[1] - heroLocation[1] === 1 ||
+        villanLocation[1] - heroLocation[1] === 0) &&
+      (villanLocation[0] - heroLocation[0] === 1 ||
+        villanLocation[0] - heroLocation[1] === 0)
+    ) {
+      console.log(electro.hp - 30);
+    }
+    let villanImg = document.querySelector("div .zerohoney-villan-image");
+    villanAction(villanImg);
   }
 }
 
@@ -190,7 +256,7 @@ function villanAction(villanImg) {
       "#zerohoney-main-stage-third-row-forth"
     );
   }
-  let villanOnGoingTileId = validationMovementAuto(zerohoneyBeforeVillanTile);
+  let villanOnGoingTileId = validationVillanMovement(zerohoneyBeforeVillanTile);
   // 빌런이 이동했다면 else,아니라면 if
   if (villanOnGoingTileId === "villanAttack") {
     villanAttack(zerohoneyBeforeHeroTile, zerohoneyBeforeVillanTile, 5);
@@ -201,40 +267,9 @@ function villanAction(villanImg) {
       villanAction(villanImg);
     } else {
       villanImg.remove();
-      villanOnGoingTile.innerHTML = electroNormal;
+      villanOnGoingTile.innerHTML = venomNormal;
       zerohoneyBeforeVillanTile = villanOnGoingTile;
     }
-  }
-}
-
-function heroAttack(zerohoneyBeforeHeroTile, zerohoneyBeforeVillanTile) {
-  if (zerohoneyBeforeHeroTile !== "" && zerohoneyBeforeVillanTile !== "") {
-    let heroLocation = [
-      zerohoneyChangeStringNumberToInteger[
-        zerohoneyBeforeHeroTile.id.toString().split("-")[3]
-      ],
-      zerohoneyChangeStringNumberToInteger[
-        zerohoneyBeforeHeroTile.id.toString().split("-")[5]
-      ],
-    ];
-    let villanLocation = [
-      zerohoneyChangeStringNumberToInteger[
-        zerohoneyBeforeVillanTile.id.toString().split("-")[3]
-      ],
-      zerohoneyChangeStringNumberToInteger[
-        zerohoneyBeforeVillanTile.id.toString().split("-")[5]
-      ],
-    ];
-    if (
-      Math.abs(villanLocation[0] - heroLocation[0]) <= 1 &&
-      Math.abs(villanLocation[1] - heroLocation[1]) <= 1
-    ) {
-      console.log(electrto.hp - 10);
-    }
-
-    //   스파이더맨이 공격했다면 빌런이 다음행동을 해야함
-    let villanImg = document.querySelector("div .zerohoney-villan-image");
-    villanAction(villanImg);
   }
 }
 
@@ -264,7 +299,10 @@ function villanAttack(
       Math.abs(villanLocation[0] - heroLocation[0]) <= 1 &&
       Math.abs(villanLocation[1] - heroLocation[1]) <= 1
     ) {
-      console.log("스파이더맨 맞음");
+      // 스파이더맨 객체 불러와서 처리하자
+      document.querySelector(
+        "#zerohoney-in-hpbar-left-id"
+      ).style.transform = `scaleX(${1 - electro.atk / 100})`;
     }
   }
 }
