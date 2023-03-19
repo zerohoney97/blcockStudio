@@ -148,13 +148,13 @@ body {
 
 /* 여기서부턴 동적인 css */
 
-.hero-image{
+.zerohoney-hero-image{
     width: 190px;
     height:100px;
     position: absolute;
 }
 
-.villan-image{
+.zerohoney-villan-image{
     width: 190px;
     height: 100px;
     position: absolute;
