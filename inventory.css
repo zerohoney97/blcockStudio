@@ -51,7 +51,7 @@ body{
     border: 5px solid rgb(255, 255, 255);
 }
 .conbox{
-    width: 600px;
+    width: 750px;
     height: 400px;
     border-radius: 10px;
     background-color:  rgb(114, 134, 211);
@@ -72,9 +72,34 @@ input[id="tab01"]:checked~ .con1{
     width: 136px;
     height: 90px;
     position: relative;
+    transform: translateX(30px);
 
+}
+
+.sub-content{
+    display: flex;
+    width: 100px;
+    height: 30px;
+    border: 1px solid white;
+    border-radius: 10PX;
+    box-shadow: 3px 3px grey;
+    background-color:  white;;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+   
 }
 .display{
     display: flex;
     position: absolute;
+}
+.display2{
+  display: inline-block;
+  transform: translate(10px,20px);
+}
+
+.font{
+    font-size: 30px;
 }

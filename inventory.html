@@ -9,25 +9,41 @@
 </head>
 <body>
     <div class="main-container">
-    <div class="tab_content">
+        <div class="tab_content">
         <input type="radio" name="tab-meun" id="tab01">
         <label for="tab01">INVENTORY</label>
         <div class="conbox con1">
-            <div class="display">
+        <div class="display">
+            <div class="display2">
+                <div class="sub-content">ATK</div>
+                <div class="font" id='atkresult'>0</div>
+                <div class="sub-content">DEF</div>
+                <div class="font" id='defresult'>0</div>
+                <div class="sub-content">HP</div>
+                <div class="font" id='hpfresult'>0</div>
+            </div>
             <div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-           </div>
-           <div>
-            <div class="item"></div>
+            <div class="item"><input type='image' src="https://cdn-icons-png.flaticon.com/512/1298/1298535.png" 
+                onclick='atkcount("plus")'value='+'/>
+            </div>
             <div class="item"></div>
             <div class="item"></div>
             <div class="item"></div>
            </div>
            <div>
+            <div class="item">
+                <input type='image' src="data:image/png;base64,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" 
+                onclick='defcount("plus")'value='+'/>
+            </div>
             <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+           </div>
+           <div>
+            <div class="item">
+                 <input type='image' src="https://previews.123rf.com/images/vectorchef/vectorchef1508/vectorchef150800468/43079754-%EA%B2%8C%EC%9E%84-%EC%97%90%EB%84%88%EC%A7%80-hp-%EC%95%84%EC%9D%B4%EC%BD%98.jpg" 
+                onclick='hpcount("plus")'value='+'/>
+            </div>
             <div class="item"></div>
             <div class="item"></div>
             <div class="item"></div>
@@ -44,4 +60,5 @@
     </div>
 </div>
 </body>
+<script src="./inventory.js"></script>
 </html>
