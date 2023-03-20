@@ -1,4 +1,4 @@
-/* @font-face {
+@font-face {
     font-family: 'spider';
     src: url('./font/CombackHomeRegular-jEMd9.ttf');
 }
@@ -28,9 +28,10 @@ body{
     left: 50%;
     transform: translate(-50%,-50%);
     border-radius: 30px;
-} */
+    font-family: 'spider';
+}
 
-@font-face {
+/* @font-face {
     font-family: 'spider';
     src: url('./font/CombackHomeRegular-jEMd9.ttf');
 }
@@ -158,4 +159,4 @@ input[type="checkbox" i] {
     padding: initial;
     border: initial;
 
-}
+} */
