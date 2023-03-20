@@ -153,7 +153,7 @@ function changeIdToVillanLocation() {
 
 // 빌런의 행동을 결정하는 함수(자동이기 때문에 재귀로 돌려도 상관 없음)
 function validationVillanMovement(beforeTile) {
-  let ran = parseInt(Math.random() * 7 + 1);
+  let ran = parseInt(Math.random() * 6 + 1);
   let beforeTileId = beforeTile.id.toString();
   let beforeTileArray = beforeTileId.split("-");
   let row = zerohoneyChangeStringNumberToInteger[beforeTileArray[3]];
@@ -217,7 +217,6 @@ function validationHeroMovement(clickedTile) {
 // 히어로의 행동을 시작하는 함수(클릭했을 때)
 function heroAction(clickedTile) {
   // 본 코드는 다음과 같은 규칙을 따른다.
-  console.log(clickedTile);
   let selectedTile = document.querySelector(`#${clickedTile.target.id}`);
   let heroImg = document.querySelector("div .zerohoney-hero-image");
   let villanImg = document.querySelector("div .zerohoney-villan-image");
@@ -250,7 +249,7 @@ function heroAttack() {
       Math.abs(villanLocation[0] - heroLocation[0]) <= 1 &&
       Math.abs(villanLocation[1] - heroLocation[1]) <= 1
     ) {
-      calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "hero");
+      calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "hero", false);
     }
     //   스파이더맨이 공격했다면 빌런이 다음행동을 해야함
     let villanImg = document.querySelector("div .zerohoney-villan-image");
@@ -268,7 +267,7 @@ function heroSkill() {
       (villanLocation[0] - heroLocation[0] === 1 ||
         villanLocation[0] - heroLocation[0] === 0)
     ) {
-      calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "hero");
+      calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "hero", true);
     }
 
     let villanImg = document.querySelector("div .zerohoney-villan-image");
@@ -287,25 +286,23 @@ function villanAction(villanImg) {
   let villanOnGoingTileId = validationVillanMovement(zerohoneyBeforeVillanTile);
   // 빌런이 이동했다면 else,아니라면 if
   if (villanOnGoingTileId === "villanAttack") {
-    villanAttack(zerohoneyBeforeHeroTile, zerohoneyBeforeVillanTile, 5);
+    villanAttack(zerohoneyBeforeHeroTile, zerohoneyBeforeVillanTile);
   } else {
     let villanOnGoingTile = document.querySelector(`#${villanOnGoingTileId}`);
     // 만약 빌런이 가야 할 곳에 히어로가 있다면, 이 함수를 다시 실행시킨다(재귀)
     if (villanOnGoingTile.innerHTML !== "") {
       villanAction(villanImg);
     } else {
+      let villanImg = document.querySelector("div .zerohoney-villan-image");
       villanImg.remove();
       villanOnGoingTile.innerHTML = mainVillan.normal;
+
       zerohoneyBeforeVillanTile = villanOnGoingTile;
     }
   }
 }
 
-function villanAttack(
-  zerohoneyBeforeHeroTile,
-  zerohoneyBeforeVillanTile,
-  action
-) {
+function villanAttack(zerohoneyBeforeHeroTile, zerohoneyBeforeVillanTile) {
   if (zerohoneyBeforeHeroTile !== "" && zerohoneyBeforeVillanTile !== "") {
     let heroLocation = [
       zerohoneyChangeStringNumberToInteger[
@@ -328,8 +325,25 @@ function villanAttack(
       Math.abs(villanLocation[1] - heroLocation[1]) <= 1
     ) {
       // 스파이더맨 객체 불러와서 처리하자
-
-      calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "villan");
+      let tempVillanIsSkill = parseInt(Math.random() * 3 + 1);
+      if (tempVillanIsSkill === 1 || tempVillanIsSkill === 2) {
+        calculateDmg(
+          mainVillan.who,
+          spiderMan,
+          mainVillan.info,
+          "villan",
+          false
+        );
+      } else {
+        calculateDmg(
+          mainVillan.who,
+          spiderMan,
+          mainVillan.info,
+          "villan",
+          true
+        );
+      }
     }
   }
 }
+
