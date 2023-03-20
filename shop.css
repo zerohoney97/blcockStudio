@@ -127,7 +127,7 @@ body {
 
 /* 상점 */
 
-.main-container {
+.main-container2 {
     border: 0px solid white;
     width: 950px;
     height: 550px;
@@ -137,6 +137,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 30px;
+    display: none;
     /* z-index: -1; */
 }
 
