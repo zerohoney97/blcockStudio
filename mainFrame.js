@@ -1,4 +1,3 @@
-
 // 스파이더맨
 let spiderManNormal =
   '<img class="zerohoney-hero-image" src="./resource/image/spiderman_normal.png" alt="" />';
@@ -47,7 +46,6 @@ let thanosAttack =
 let thanosSkill =
   '<img class="zerohoney-villan-image" src="./resource/image/thanos_skill.png" alt="" />';
 
-
 //   전역변수
 let zerohoneyTurn = "hero";
 // 히어로의 현재 위치
@@ -55,6 +53,47 @@ let zerohoneyBeforeHeroTile = "";
 // 빌런의 현재 위치
 let zerohoneyBeforeVillanTile = "";
 let isAuto = true;
+// 빌런을 담고 있는 오브젝트
+let villans = {
+  electro: {
+    who: "electro",
+    info: electro,
+    normal: electroNormal,
+    defense: electroDefense,
+    damaged: electroDamaged,
+    attack: electroAttack,
+    skill: electroSkill,
+  },
+  venom: {
+    who: "venom",
+    info: venom,
+    normal: venomNormal,
+    defense: venomDefense,
+    damaged: venomDamaged,
+    attack: venomAttack,
+    skill: venomSkill,
+  },
+  thanos: {
+    who: "thanos",
+    info: thanos,
+    normal: thanosNormal,
+    defense: thanosDefense,
+    damaged: thanosDamaged,
+    attack: thanosAttack,
+    skill: thanosSkill,
+  },
+};
+// 현재 빌런
+let mainVillan = {
+  who: villans.electro.who,
+  info: villans.electro.info,
+  normal: villans.electro.normal,
+  defense: villans.electro.defense,
+  damaged: villans.electro.damaged,
+  attack: villans.electro.attack,
+  skill: villans.electro.skill,
+};
+let stage = 1;
 let zerohoneyChangeStringNumberToInteger = {
   first: 1,
   second: 2,
@@ -70,7 +109,7 @@ let zerohoneyChangeStringIntegerToNumber = {
 // 로드시 빌런생성
 window.onload = () => {
   document.querySelector("#zerohoney-main-stage-third-row-forth").innerHTML =
-    venomNormal;
+    mainVillan.normal;
 };
 // 이동하기
 document
@@ -211,9 +250,8 @@ function heroAttack() {
       Math.abs(villanLocation[0] - heroLocation[0]) <= 1 &&
       Math.abs(villanLocation[1] - heroLocation[1]) <= 1
     ) {
-      console.log(electro.hp - 10);
+      calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "hero");
     }
-
     //   스파이더맨이 공격했다면 빌런이 다음행동을 해야함
     let villanImg = document.querySelector("div .zerohoney-villan-image");
     villanAction(villanImg);
@@ -228,10 +266,11 @@ function heroSkill() {
       (villanLocation[1] - heroLocation[1] === 1 ||
         villanLocation[1] - heroLocation[1] === 0) &&
       (villanLocation[0] - heroLocation[0] === 1 ||
-        villanLocation[0] - heroLocation[1] === 0)
+        villanLocation[0] - heroLocation[0] === 0)
     ) {
-      console.log(electro.hp - 30);
+      calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "hero");
     }
+
     let villanImg = document.querySelector("div .zerohoney-villan-image");
     villanAction(villanImg);
   }
@@ -256,7 +295,7 @@ function villanAction(villanImg) {
       villanAction(villanImg);
     } else {
       villanImg.remove();
-      villanOnGoingTile.innerHTML = venomNormal;
+      villanOnGoingTile.innerHTML = mainVillan.normal;
       zerohoneyBeforeVillanTile = villanOnGoingTile;
     }
   }
@@ -289,10 +328,8 @@ function villanAttack(
       Math.abs(villanLocation[1] - heroLocation[1]) <= 1
     ) {
       // 스파이더맨 객체 불러와서 처리하자
-      electro.hp -= electro.atk;
-      document.querySelector(
-        "#zerohoney-in-hpbar-left-id"
-      ).style.transform = `scaleX(${electro.hp / 100})`;
+
+      calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "villan");
     }
   }
 }
