@@ -1,12 +1,12 @@
  @font-face {
     font-family: 'spider';
-    src: url('./font/CombackHomeRegular-jEMd9.ttf');
+    src: url('./blockStudio_csh/font/CombackHomeRegular-jEMd9.ttf');
 }
 
 body{
     margin: 0;
     padding: 0;
-    background-image: url('./spidermanBackground.jpeg');
+    background-image: url('./blockStudio_csh/img/spidermanBackground.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
@@ -72,6 +72,7 @@ input[id="tab01"]:checked~ .con1{
     width: 136px;
     height: 90px;
     position: relative;
+    justify-content: center;
     transform: translateX(30px);
 
 }

@@ -1,6 +1,6 @@
 @font-face {
   font-family: "spider";
-  src: url("./font/CombackHomeRegular-jEMd9.ttf");
+  src: url("./blockStudio_csh/font/CombackHomeRegular-jEMd9.ttf");
 }
 
 /* 꼰대 훈수:css순서는 html과 동일하게 위에서 아래로 하는게 좋아. 
@@ -15,7 +15,7 @@ h1 {
 body {
   margin: 0;
   padding: 0;
-  background-image: url("./spidermanBackground.jpeg");
+  background-image: url("./blockStudio_csh/img/spidermanBackground.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100vw;
@@ -93,6 +93,7 @@ body {
 .yeon-lg-inbtn {
   cursor: pointer;
   background-color: rgb(142, 167, 233);
+  box-shadow: 3px 3px grey;
   height: 36px;
   width: 200px;
   font-family: "spider";
@@ -103,6 +104,7 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 12px;
+
 }
 .yeon-mid {
   position: absolute;
