@@ -13,31 +13,32 @@
       <br>
 <!-- 고생했어 연수야 되게 잘했네. 파이팅 고연수! 멋찌따 연수야아아아! 호우!!!! -->
       <div>
-
-      <label class="yeon-id">
-        <input type="text" placeholder="아이디 입력">
+        
+      <label for="yeon-id" class="yeon-id">
+        <input type="text" id='id' placeholder="아이디 입력">
       </label>
       <!--라벨에는 for속성이 반드시 필요해. input의 id와 label의 for를 똑같이 지정해서 연결되도록 만들어줘
        -->
-      <label class="yeon-id">
-        <input type="text" placeholder="비밀번호">
+      <label class="yeon-password">
+        <input type="password" id='pw' placeholder="비밀번호">
       </label>
       <br>
       <div>
         <!-- 라벨은 되도록이면 input에 가깝게 붙게해줘 마찬가지로 label의 for와 input의 id도 같게 해주고 -->
-        <label for="yeon-mid">
         <div class="mid-display">
-        <div class="yeon-click"><input type="checkbox"> </div>
-        <!-- imfo->info -->
-        <div class="yeon-imfo">Save Login Information</div>
+          <div class="yeon-click">
+            <input type="checkbox" id="yeon-mid"> 
+            <label for="yeon-mid"></div>
+          <div class="yeon-info" >Save Login Information</div>
+        </label>
       </div>
-
-       </label>
        <div class="log-title">
-        <button class="yeon-lg-inbtn">Log In</button>
+        <!-- <input type="=button" class="yeon-lg-inbtn" value=""> -->
+        <button class="yeon-lg-inbtn" id='login' onclick="newPage()">Log In</button>
        </div>
       </div>
   </div>
 </div>
 </body>
+<script src="./yeonFrame.js"></script>
 </html>
