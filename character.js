@@ -1,7 +1,10 @@
-function hero(atk, def, hp) {
+function hero(atk, def, hp, weapon, armor, hpItem) {
   this.atk = atk;
   this.def = def;
   this.hp = hp;
+  this.weapon = weapon;
+  this.armor = armor;
+  this.hpItem = hpItem;
 }
 
 function villan(atk, def, hp) {
