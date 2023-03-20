@@ -3,11 +3,11 @@
     src: url('./font/CombackHomeRegular-jEMd9.ttf');
 }
 
-h1{
+h1 {
     font-family: 'spider';
 }
 
-body{
+body {
     margin: 0;
     padding: 0;
     background-image: url('./spidermanBackground.jpeg');
@@ -20,7 +20,7 @@ body{
 
 /* 아이템 구매 버튼 클릭 시 발생하는 이벤트 */
 
-.popup_background{
+.popup_background {
     background-color: rgba(0, 0, 0, 0.492);
     width: 100%;
     height: 100%;
@@ -28,12 +28,12 @@ body{
     position: relative;
 }
 
-.popup_background.is_active{
+.popup_background.is_active {
     display: block;
     z-index: 10;
 }
 
-.wanna_buy{
+.wanna_buy {
     background-color: white;
     border: 0px solid white;
     border-radius: 30px;
@@ -42,8 +42,8 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    font-size: 40px;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
     text-align: center;
     display: flex;
     justify-content: space-evenly;
@@ -51,14 +51,14 @@ body{
     align-items: center;
 }
 
-.answer{
+.answer {
     display: flex;
     line-height: 2;
     font-size: 25px;
 }
 
 .answer .yes,
-.answer .no{
+.answer .no {
     background-color: #f5b1b1;
     width: 100px;
     height: 50px;
@@ -67,14 +67,31 @@ body{
     cursor: pointer;
 }
 
-.answer .yes{
+.answer .yes {
     margin-right: 20px;
+}
+
+.ok2 {
+    background-color: #f5b1b1;
+    width: 100px;
+    height: 50px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    text-align: center;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    z-index: 10;
+    display: block;
 }
 
 
 /* 아이템 구매 금액이 부족할 때 발생하는 이벤트 */
 
-.noMoney_background{
+.noMoney_background {
     background-color: rgba(0, 0, 0, 0.492);
     width: 100%;
     height: 100%;
@@ -82,12 +99,12 @@ body{
     position: absolute;
 }
 
-.noMoney_background.is_active{
+.noMoney_background.is_active {
     display: block;
     z-index: 10;
 }
 
-.noMoney_mention{
+.noMoney_mention {
     background-color: white;
     border: 0px solid white;
     border-radius: 30px;
@@ -96,7 +113,7 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     font-size: 30px;
     text-align: center;
     display: flex;
@@ -106,18 +123,11 @@ body{
 }
 
 
-.ok{
-    background-color: #f5b1b1;
-    width: 100px;
-    height: 50px;
-    border: 1px solid gray;
-    border-radius: 10px;
-    cursor: pointer;
-}
+
 
 /* 상점 */
 
-.main-container{
+.main-container {
     border: 0px solid white;
     width: 950px;
     height: 550px;
@@ -125,12 +135,12 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 30px;
     /* z-index: -1; */
 }
 
-.shop_bar{
+.shop_bar {
     border: 0px solid;
     width: 950px;
     height: 80px;
@@ -141,14 +151,14 @@ body{
     position: relative;
 }
 
-.back_to_main img{
+.back_to_main img {
     width: 90px;
     height: 60px;
     margin-left: 10px;
     cursor: pointer;
 }
 
-.game_money{
+.game_money {
     border: 1px solid;
     width: 210px;
     height: 50px;
@@ -164,12 +174,12 @@ body{
     align-items: center;
 }
 
-.game_money img{
+.game_money img {
     width: 60px;
     height: 55px;
 }
 
-.go_inventory{
+.go_inventory {
     width: 150px;
     height: 50px;
     border: 1px solid;
@@ -182,18 +192,98 @@ body{
     cursor: pointer;
 }
 
-.shop_item{
+.tab{
+    display: flex;
+    flex-direction: column;
+    width: 130px;
+}
+
+.tab > input{
+    display: none;
+}
+
+.tab >input + label{
+    display: inline-block;
+    border: 1px solid black;
+    background-color: #7286D3;
+    font-size: 25px;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    line-height: 2;
+    cursor: pointer;
+}
+
+.box{
+    display: none;
+}
+
+input[class = 'weapon_tab']:checked ~ .weapon_item{
+    display: block;
+}
+
+input[class = 'armor_tab']:checked ~ .armor_item{
+    display: block;
+}
+
+input[class = 'life_tab']:checked ~ .life_item{
+    display: block;
+}
+
+label{
+    position: absolute;
+    left: 70px;
+    top: 50%;
+}
+
+.weapon_btn{
+    position: absolute;
+    top: 170px;
+}
+
+.armor_btn{
+    position: absolute;
+    top: 260px;
+}
+
+.life_btn{
+    position: absolute;
+    top: 350px;
+}
+
+
+.item_list .weapon {
+    position: absolute;
+    top: 140px;
+    cursor: pointer;
+}
+
+.item_list .armor {
+    position: absolute;
+    top: 240px;
+    cursor: pointer;
+}
+
+.item_list .life {
+    position: absolute;
+    top: 340px;
+    cursor: pointer;
+}
+
+.shop_item {
     display: flex;
     justify-content: flex-end;
     margin-right: 20px;
+    position: absolute;
+    right: 30px;
 }
 
-.shop_item ul{
+.shop_item ul {
     list-style: none;
     padding-left: 10px;
 }
 
-.item_name{
+.item_name {
     border: 1px solid;
     width: 190px;
     height: 40px;
@@ -201,7 +291,7 @@ body{
     text-align: center;
 }
 
-.item_img{
+.item_img {
     border: 1px solid;
     width: 190px;
     height: 200px;
@@ -210,13 +300,13 @@ body{
     justify-content: center;
 }
 
-.item_img img{
+.item_img img {
     width: 150px;
     height: 150px;
     object-position: 50% 50%;
 }
 
-.item_info{
+.item_info {
     border: 1px solid;
     width: 190px;
     height: 100px;
@@ -225,7 +315,7 @@ body{
     line-height: 2;
 }
 
-.item_price{
+.item_price {
     border: 1px solid;
     width: 190px;
     height: 50px;
@@ -238,7 +328,7 @@ body{
     justify-content: center;
 }
 
-.item_price img{
+.item_price img {
     width: 40px;
     height: 40px;
     margin-right: 10px;
