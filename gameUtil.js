@@ -1,7 +1,7 @@
-
+let heroImg = document.querySelector("div .zerohoney-hero-image");
+let villanImg = document.querySelector("div .zerohoney-villan-image");
 function reward(params) {
   let getMoney = parseInt(Math.random() * 20);
-
 
   return 100 * getMoney;
 }
@@ -37,11 +37,13 @@ function validateGameOver(heroHp, villanHp) {
         mainVillan.attack = villans.venom.attack;
         mainVillan.defense = villans.venom.defense;
         mainVillan.skill = villans.venom.skill;
-        my_money+=reward();
+        my_money += reward();
         document.querySelector(
           ".game_money"
         ).innerHTML = `<img src="./etherium.png"> ${my_money}`;
-        document.querySelector('.main-container2').style.display='block'
+        document.querySelector(".main-container2").style.display = "block";
+        villanImg.remove();
+
         init(venomNormal);
 
         break;
@@ -53,11 +55,12 @@ function validateGameOver(heroHp, villanHp) {
         mainVillan.attack = villans.thanos.attack;
         mainVillan.defense = villans.thanos.defense;
         mainVillan.skill = villans.thanos.skill;
-        my_money+=reward();
+        my_money += reward();
         document.querySelector(
           ".game_money"
         ).innerHTML = `<img src="./etherium.png"> ${my_money}`;
-        document.querySelector('.main-container2').style.display='block'
+        document.querySelector(".main-container2").style.display = "block";
+        villanImg.remove();
 
         init(thanosNormal);
 
@@ -69,7 +72,10 @@ function validateGameOver(heroHp, villanHp) {
 // 초기화 함수
 function init(villanNormal) {
   setTimeout(() => {
-    spiderMan.hp=spiderMan.maxHp;
+    heroImg.remove();
+  }, 800);
+  setTimeout(() => {
+    spiderMan.hp = spiderMan.maxHp;
     document.querySelector("#zerohoney-main-stage-third-row-forth").innerHTML =
       villanNormal;
     document.querySelector("#zerohoney-main-stage-first-row-first").innerHTML =
