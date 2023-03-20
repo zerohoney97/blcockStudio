@@ -61,4 +61,5 @@ function init(villanNormal) {
     document.querySelector("#zerohoney-in-hpbar-right-id").style.transform =
       "scaleX(1)";
   }, 1000);
+  window.location.href='http://127.0.0.1:5500/shop.html'
 }
