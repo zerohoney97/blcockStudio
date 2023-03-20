@@ -1,3 +1,4 @@
+
 // 스파이더맨
 let spiderManNormal =
   '<img class="zerohoney-hero-image" src="./resource/image/spiderman_normal.png" alt="" />';
@@ -46,17 +47,6 @@ let thanosAttack =
 let thanosSkill =
   '<img class="zerohoney-villan-image" src="./resource/image/thanos_skill.png" alt="" />';
 
-// 케릭터--------------------------------------------------------------------------------------------------------
-function villan(atk, def, hp) {
-  this.atk = atk;
-  this.def = def;
-  this.hp = hp;
-}
-
-let electro = new villan(10, 10, 100);
-let venom = new villan(15, 15, 150);
-let thanos = new villan(30, 30, 300);
-// 케릭터--------------------------------------------------------------------------------------------------------
 
 //   전역변수
 let zerohoneyTurn = "hero";
@@ -71,7 +61,6 @@ let zerohoneyChangeStringNumberToInteger = {
   third: 3,
   forth: 4,
 };
-
 let zerohoneyChangeStringIntegerToNumber = {
   1: "first",
   2: "second",
@@ -300,9 +289,10 @@ function villanAttack(
       Math.abs(villanLocation[1] - heroLocation[1]) <= 1
     ) {
       // 스파이더맨 객체 불러와서 처리하자
+      electro.hp -= electro.atk;
       document.querySelector(
         "#zerohoney-in-hpbar-left-id"
-      ).style.transform = `scaleX(${1 - electro.atk / 100})`;
+      ).style.transform = `scaleX(${electro.hp / 100})`;
     }
   }
 }
