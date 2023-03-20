@@ -103,4 +103,6 @@ input[id="tab01"]:checked~ .con1{
 
 .font{
     font-size: 30px;
+    display: flex;
+    justify-content: center;
 }

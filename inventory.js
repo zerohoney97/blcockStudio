@@ -1,3 +1,43 @@
+//common,rare,unique,legendary
+function Gauntlet(name, price, atkpoint, grade) {
+  this.name = name;
+  this.price = price;
+  this.atkpoint = atkpoint;
+  this.grade = grade;
+  console.log(`${name}을 착용했습니다. 가격: ${price}, 공격력: +${atkpoint} grade : ${grade} `)
+}
+let gauntlet1 = new Gauntlet('gauntlet1', 100, 10,'common' )
+let gauntlet2 = new Gauntlet('gauntlet2', 200, 15, 'rare')
+let gauntlet3 = new Gauntlet('gauntlet3', 300, 20, 'unique')
+let gauntlet4 = new Gauntlet('gauntlet4', 400, 25, 'legendary')
+
+
+function Shield(name, price, defpoint, grade) {
+  this.name = name;
+  this.price = price;
+  this.atkpoint = defpoint;
+  this.grade = grade;
+  console.log(`${name}을 착용했습니다. 가격: ${price}, 방어력 +${defpoint} grade : ${grade} `)
+}
+let shield1 = new Shield('shield1', 100, 15, 'common')
+let shield2 = new Shield('shield2', 200, 20, 'rare')
+let shield3 = new Shield('shield3', 300, 25, 'unique')
+let shield4 = new Shield('shield4', 400, 30, 'legendary')
+
+
+function Hp(name, price, hppoint, grade) {
+  this.name = name;
+  this.price = price;
+  this.atkpoint = hppoint;
+  this.grade = grade;
+  console.log(`${name}을 착용했습니다. 가격: ${price}, Hp +${hppoint} grade : ${grade} `)
+}
+let sapphire1 = new Hp('sapphire1', 100, 15, 'common')
+let sapphire2 = new Hp('sapphire2', 200, 20, 'rare')
+let sapphire3 = new Hp('sapphire3', 300, 25, 'unique')
+let sapphire4 = new Hp('sapphire4', 400, 30, 'legendary')
+
+
 let selectIndex = 0;
 let selectAtkItem = null;
 function atkcount1(type) {
