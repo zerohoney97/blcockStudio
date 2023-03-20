@@ -60,5 +60,5 @@ function init(villanNormal) {
       "scaleX(1)";
     document.querySelector("#zerohoney-in-hpbar-right-id").style.transform =
       "scaleX(1)";
-  }, 500);
+  }, 1000);
 }

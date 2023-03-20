@@ -8,7 +8,7 @@ let spiderManDefense =
 let spiderManAttack =
   '<img class="zerohoney-hero-image" src="./resource/image/spiderman_attack.png" alt="" />';
 let spiderManAttack2 =
-  '<img class="zerohoney-hero-image" src="./resource/image/spiderman_attack2.png" alt="" />';
+  '<img class="zerohoney-hero-image" src="./resource/image/spiderman_attac2.png" alt="" />';
 let spiderManSkill =
   '<img class="zerohoney-hero-image" src="./resource/image/spiderman_skill.png" alt="" />';
 
@@ -249,11 +249,19 @@ function heroAttack() {
       Math.abs(villanLocation[0] - heroLocation[0]) <= 1 &&
       Math.abs(villanLocation[1] - heroLocation[1]) <= 1
     ) {
-      calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "hero", false);
+      setTimeout(() => {
+        zerohoneyBeforeHeroTile.innerHTML = spiderManNormal;
+        zerohoneyBeforeVillanTile.innerHTML = mainVillan.normal;
+        calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "hero", false);
+      }, 300);
+      zerohoneyBeforeHeroTile.innerHTML = spiderManAttack;
+      zerohoneyBeforeVillanTile.innerHTML = mainVillan.damaged;
     }
     //   스파이더맨이 공격했다면 빌런이 다음행동을 해야함
     let villanImg = document.querySelector("div .zerohoney-villan-image");
-    villanAction(villanImg);
+    setTimeout(() => {
+      villanAction(villanImg);
+    }, 400);
   }
 }
 
@@ -267,11 +275,19 @@ function heroSkill() {
       (villanLocation[0] - heroLocation[0] === 1 ||
         villanLocation[0] - heroLocation[0] === 0)
     ) {
-      calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "hero", true);
+      setTimeout(() => {
+        zerohoneyBeforeHeroTile.innerHTML = spiderManNormal;
+        zerohoneyBeforeVillanTile.innerHTML = mainVillan.normal;
+        calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "hero", true);
+      }, 300);
+      zerohoneyBeforeHeroTile.innerHTML = spiderManAttack2;
+      zerohoneyBeforeVillanTile.innerHTML = mainVillan.damaged;
     }
 
     let villanImg = document.querySelector("div .zerohoney-villan-image");
-    villanAction(villanImg);
+    setTimeout(() => {
+      villanAction(villanImg);
+    }, 400);
   }
 }
 
@@ -327,23 +343,34 @@ function villanAttack(zerohoneyBeforeHeroTile, zerohoneyBeforeVillanTile) {
       // 스파이더맨 객체 불러와서 처리하자
       let tempVillanIsSkill = parseInt(Math.random() * 3 + 1);
       if (tempVillanIsSkill === 1 || tempVillanIsSkill === 2) {
-        calculateDmg(
-          mainVillan.who,
-          spiderMan,
-          mainVillan.info,
-          "villan",
-          false
-        );
+        setTimeout(() => {
+          zerohoneyBeforeHeroTile.innerHTML = spiderManNormal;
+          zerohoneyBeforeVillanTile.innerHTML = mainVillan.normal;
+          calculateDmg(
+            mainVillan.who,
+            spiderMan,
+            mainVillan.info,
+            "villan",
+            false
+          );
+        }, 300);
+        zerohoneyBeforeHeroTile.innerHTML = spiderManDamaged;
+        zerohoneyBeforeVillanTile.innerHTML = mainVillan.attack;
       } else {
-        calculateDmg(
-          mainVillan.who,
-          spiderMan,
-          mainVillan.info,
-          "villan",
-          true
-        );
+        setTimeout(() => {
+          zerohoneyBeforeHeroTile.innerHTML = spiderManNormal;
+          zerohoneyBeforeVillanTile.innerHTML = mainVillan.normal;
+          calculateDmg(
+            mainVillan.who,
+            spiderMan,
+            mainVillan.info,
+            "villan",
+            true
+          );
+        }, 300);
+        zerohoneyBeforeHeroTile.innerHTML = spiderManDamaged;
+        zerohoneyBeforeVillanTile.innerHTML = mainVillan.skill;
       }
     }
   }
 }
-
