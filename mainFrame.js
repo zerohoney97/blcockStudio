@@ -117,13 +117,15 @@ document
   .addEventListener("click", (a) => {
     heroAction(a);
   });
-
+let webSound = new Audio("./webSound.mp3");
 // 공격키
 document.querySelector("#zerohoney-attack-id").addEventListener("click", () => {
+  webSound.play();
   heroAttack();
 });
 // 스킬키
 document.querySelector("#zerohoney-skill-id").addEventListener("click", () => {
+  webSound.play();
   heroSkill();
 });
 
@@ -153,7 +155,7 @@ function changeIdToVillanLocation() {
 
 // 빌런의 행동을 결정하는 함수(자동이기 때문에 재귀로 돌려도 상관 없음)
 function validationVillanMovement(beforeTile) {
-  let ran = parseInt(Math.random() * 6 + 1);
+  let ran = parseInt(Math.random() * 7 + 1);
   let beforeTileId = beforeTile.id.toString();
   let beforeTileArray = beforeTileId.split("-");
   let row = zerohoneyChangeStringNumberToInteger[beforeTileArray[3]];
@@ -1277,8 +1279,9 @@ document.querySelector("#back-to-game").addEventListener("click", () => {
 
 function onclickYes() {
   let popup = document.querySelector(".popup_background");
-
+  let coinDrop = new Audio("./coinDrop.mp3");
   if (my_money >= price) {
+    coinDrop.play()
     popup.classList.remove("is_active");
     my_money = my_money - price;
     switch (grade) {
