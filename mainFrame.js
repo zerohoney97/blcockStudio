@@ -253,7 +253,7 @@ function heroAttack() {
         zerohoneyBeforeHeroTile.innerHTML = spiderManNormal;
         zerohoneyBeforeVillanTile.innerHTML = mainVillan.normal;
         calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "hero", false);
-      }, 300);
+      }, 200);
       zerohoneyBeforeHeroTile.innerHTML = spiderManAttack;
       zerohoneyBeforeVillanTile.innerHTML = mainVillan.damaged;
     }
@@ -261,7 +261,7 @@ function heroAttack() {
     let villanImg = document.querySelector("div .zerohoney-villan-image");
     setTimeout(() => {
       villanAction(villanImg);
-    }, 400);
+    }, 100);
   }
 }
 
@@ -279,7 +279,7 @@ function heroSkill() {
         zerohoneyBeforeHeroTile.innerHTML = spiderManNormal;
         zerohoneyBeforeVillanTile.innerHTML = mainVillan.normal;
         calculateDmg(mainVillan.who, spiderMan, mainVillan.info, "hero", true);
-      }, 300);
+      }, 200);
       zerohoneyBeforeHeroTile.innerHTML = spiderManAttack2;
       zerohoneyBeforeVillanTile.innerHTML = mainVillan.damaged;
     }
@@ -287,7 +287,7 @@ function heroSkill() {
     let villanImg = document.querySelector("div .zerohoney-villan-image");
     setTimeout(() => {
       villanAction(villanImg);
-    }, 400);
+    }, 100);
   }
 }
 
@@ -353,7 +353,7 @@ function villanAttack(zerohoneyBeforeHeroTile, zerohoneyBeforeVillanTile) {
             "villan",
             false
           );
-        }, 300);
+        }, 150);
         zerohoneyBeforeHeroTile.innerHTML = spiderManDamaged;
         zerohoneyBeforeVillanTile.innerHTML = mainVillan.attack;
       } else {
@@ -367,7 +367,7 @@ function villanAttack(zerohoneyBeforeHeroTile, zerohoneyBeforeVillanTile) {
             "villan",
             true
           );
-        }, 300);
+        }, 150);
         zerohoneyBeforeHeroTile.innerHTML = spiderManDamaged;
         zerohoneyBeforeVillanTile.innerHTML = mainVillan.skill;
       }

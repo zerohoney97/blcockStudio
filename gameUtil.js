@@ -74,7 +74,7 @@ function init(villanNormal) {
   setTimeout(() => {
     document.querySelector("div .zerohoney-hero-image");
     document.querySelector("div .zerohoney-villan-image");
-  }, 800);
+  }, 200);
   setTimeout(() => {
     spiderMan.hp = spiderMan.maxHp;
     document.querySelector("#zerohoney-main-stage-third-row-forth").innerHTML =
@@ -86,5 +86,5 @@ function init(villanNormal) {
       "scaleX(1)";
     document.querySelector("#zerohoney-in-hpbar-right-id").style.transform =
       "scaleX(1)";
-  }, 1000);
+  }, 300);
 }
