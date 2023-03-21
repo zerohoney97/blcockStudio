@@ -117,15 +117,19 @@ document
   .addEventListener("click", (a) => {
     heroAction(a);
   });
-let webSound = new Audio("./webSound.mp3");
+let webSound = new Audio("./resource/sound/webSound.mp3");
+let skillSound = new Audio("./resource/sound/skillSound.mp3");
+let electroSound = new Audio("./resource/sound/electricSound.mp3");
+let venomSound = new Audio("./resource/sound/venomSound.mp3");
+let thanosSound = new Audio("./resource/sound/thanosSound.mp3");
+
 // 공격키
 document.querySelector("#zerohoney-attack-id").addEventListener("click", () => {
-  webSound.play();
   heroAttack();
 });
 // 스킬키
 document.querySelector("#zerohoney-skill-id").addEventListener("click", () => {
-  webSound.play();
+  skillSound.play();
   heroSkill();
 });
 
@@ -344,8 +348,25 @@ function villanAttack(zerohoneyBeforeHeroTile, zerohoneyBeforeVillanTile) {
     ) {
       // 스파이더맨 객체 불러와서 처리하자
       let tempVillanIsSkill = parseInt(Math.random() * 3 + 1);
+
       if (tempVillanIsSkill === 1 || tempVillanIsSkill === 2) {
         setTimeout(() => {
+          switch (mainVillan.who) {
+            case "electro":
+              electroSound.play();
+              break;
+            case "venom":
+              venomSound.currentTime=1;
+              venomSound.play();
+              break;
+            case "thanos":
+              thanosSound.volume=1;
+              thanosSound.currentTime=1;
+              thanosSound.play();
+              break;
+            default:
+              break;
+          }
           zerohoneyBeforeHeroTile.innerHTML = spiderManNormal;
           zerohoneyBeforeVillanTile.innerHTML = mainVillan.normal;
           calculateDmg(
@@ -360,6 +381,22 @@ function villanAttack(zerohoneyBeforeHeroTile, zerohoneyBeforeVillanTile) {
         zerohoneyBeforeVillanTile.innerHTML = mainVillan.attack;
       } else {
         setTimeout(() => {
+          switch (mainVillan.who) {
+            case "electro":
+              electroSound.play();
+              break;
+            case "venom":
+              venomSound.currentTime=1;
+              venomSound.play();
+              break;
+            case "thanos":
+              thanosSound.volume=1;
+              thanosSound.currentTime=1;
+              thanosSound.play();
+              break;
+            default:
+              break;
+          }
           zerohoneyBeforeHeroTile.innerHTML = spiderManNormal;
           zerohoneyBeforeVillanTile.innerHTML = mainVillan.normal;
           calculateDmg(
@@ -1279,9 +1316,9 @@ document.querySelector("#back-to-game").addEventListener("click", () => {
 
 function onclickYes() {
   let popup = document.querySelector(".popup_background");
-  let coinDrop = new Audio("./coinDrop.mp3");
+  let coinDrop = new Audio("./resource/sound/coinDrop.mp3");
   if (my_money >= price) {
-    coinDrop.play()
+    coinDrop.play();
     popup.classList.remove("is_active");
     my_money = my_money - price;
     switch (grade) {
