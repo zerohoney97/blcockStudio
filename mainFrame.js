@@ -1,6 +1,6 @@
 // 스파이더맨
 let spiderManNormal =
-  '<img class="zerohoney-hero-image" src="./resource/image/spiderman_normal.png" alt="" />';
+  '<img class="zerohoney-hero-image" src="./resource/image/spiderman_normal.png" alt="" />';
 let spiderManDamaged =
   '<img class="zerohoney-hero-image" src="./resource/image/spiderman_damaged.png" alt="" />';
 let spiderManDefense =

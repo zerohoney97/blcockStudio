@@ -1,5 +1,5 @@
-let heroImg = document.querySelector("div .zerohoney-hero-image");
-let villanImg = document.querySelector("div .zerohoney-villan-image");
+// let heroImg = document.querySelector("div .zerohoney-hero-image");
+// let villanImg = document.querySelector("div .zerohoney-villan-image");
 function reward(params) {
   let getMoney = parseInt(Math.random() * 20);
 
@@ -72,7 +72,8 @@ function validateGameOver(heroHp, villanHp) {
 // 초기화 함수
 function init(villanNormal) {
   setTimeout(() => {
-    heroImg.remove();
+    document.querySelector("div .zerohoney-hero-image");
+    document.querySelector("div .zerohoney-villan-image");
   }, 800);
   setTimeout(() => {
     spiderMan.hp = spiderMan.maxHp;
